@@ -8,6 +8,7 @@ public class heroController : MonoBehaviour
     float jumpForce = 300.0f;
     float walkForce = 10.0f;
     float maxWalkSpeed = 2.0f;
+    Animator animator;
     private float targetFrameRate = 60f;
 
 
@@ -16,6 +17,7 @@ public class heroController : MonoBehaviour
     {
         Time.fixedDeltaTime = 1f / targetFrameRate;
         this.rigid2D = GetComponent<Rigidbody2D>();
+        this.animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -45,5 +47,8 @@ public class heroController : MonoBehaviour
         {
             transform.localScale = new Vector3(key, 2, 2);
         }
+
+        //애니메이션 속도 바꾸기
+        this.animator.speed = speedx/2.0f;
     }
 }
