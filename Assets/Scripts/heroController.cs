@@ -27,6 +27,7 @@ public class heroController : MonoBehaviour
         // 시작 시 Step 상태로 진입
         animator.SetBool("isStep", true);
 
+        attackCollider = transform.Find("attackCollider").gameObject;
         attackCollider.SetActive(false);
     }
 
