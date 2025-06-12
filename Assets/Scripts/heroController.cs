@@ -51,21 +51,4 @@ public class heroController : MonoBehaviour
         //애니메이션 속도 바꾸기
         this.animator.speed = speedx/2.0f;
     }
-
-    
-   /* void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("planet"))
-        {
-             transform.SetParent(collision.transform);
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("planet"))
-        {
-            transform.SetParent(null);
-        }
-    } */
 }
