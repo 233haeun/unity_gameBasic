@@ -142,7 +142,7 @@ public class heroController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("dragon"))
         {
-            Debug.Log("드래곤과 충돌");
+            //Debug.Log("드래곤과 충돌");
             HandleDie();
         }
     }
@@ -155,11 +155,11 @@ public class heroController : MonoBehaviour
         this.enabled = false;
 
         // 애니메이션이 끝난 후 장면 이동
-        StartCoroutine(DieAndLoadScene());
+        StartCoroutine(dieScene());
     }
-    IEnumerator DieAndLoadScene()
+    IEnumerator dieScene()
     {
-        // 애니메이션 재생 후 죽을 수 있게
+        // 애니메이션 재생 후 죽을 수 있게 딜레이
         yield return new WaitForSeconds(1.0f);
 
         SceneManager.LoadScene("loseScene");
