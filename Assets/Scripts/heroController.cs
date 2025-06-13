@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 
 public class heroController : MonoBehaviour
@@ -13,7 +14,7 @@ public class heroController : MonoBehaviour
 
     public float runForce = 30f;
     public float maxRunSpeed = 60f;
-    public float jumpForce = 900f;
+    public float jumpForce = 680f;
 
     private bool isRun = false;
     private bool isJump = false;
@@ -38,6 +39,7 @@ public class heroController : MonoBehaviour
         HandleAttack();
     }
 
+    //좌우 움직임
     void HandleMovement()
     {
         int key = 0;
@@ -53,12 +55,6 @@ public class heroController : MonoBehaviour
             transform.localScale = new Vector3(key, 2, 2);
         }
 
-        // 이동
-        if (key != 0 && speedX < maxRunSpeed)
-        {
-            rigid2D.AddForce(transform.right * key * runForce);
-        }
-
         // 이동 & 애니메이션 처리
         if (key != 0 && speedX < maxRunSpeed)
         {
@@ -69,10 +65,9 @@ public class heroController : MonoBehaviour
 
 
             if (runResetCoroutine != null)
-                StopCoroutine(runResetCoroutine);
+                StopCoroutine(runResetCoroutine); // 리셋 인식 안되고 계속 움직임 방지
 
-            runResetCoroutine = StartCoroutine(runReset(0.4f));
-
+            runResetCoroutine = StartCoroutine(runReset(0.4f)); // 무조건 0.4초 후 리셋
         }
         else if (isRun)
         {
@@ -94,7 +89,7 @@ public class heroController : MonoBehaviour
         runResetCoroutine = null;
     }
 
-
+    //점프
     void HandleJump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && !isJump)
@@ -104,7 +99,7 @@ public class heroController : MonoBehaviour
             rigid2D.AddForce(Vector2.up * jumpForce);
             isJump = true;
 
-            StartCoroutine(jumpReset(0.4f)); // 예시: 0.4초 후 착지 간주
+            StartCoroutine(jumpReset(0.4f)); // 무조건 0.4초 후 리셋
         }
     }
     IEnumerator jumpReset(float delay)
@@ -114,6 +109,7 @@ public class heroController : MonoBehaviour
         animator.SetBool("isStep", true);
     }
 
+    //공격
     void HandleAttack()
     {
         if (Input.GetKeyDown(KeyCode.A) && !isAttack)
@@ -121,7 +117,7 @@ public class heroController : MonoBehaviour
             isAttack = true;
             animator.SetTrigger("isAttack");
 
-            StartCoroutine(ResetAttack(0.5f));
+            StartCoroutine(ResetAttack(0.4f));  // 무조건 0.4초 후 리셋
         }
     }
 
@@ -131,6 +127,7 @@ public class heroController : MonoBehaviour
         isAttack = false;
     }
 
+    //드래곤한테 칼 휘두를 때 충돌감지
     public void EnableAttackCollider()
     {
         attackCollider.SetActive(true);
@@ -139,5 +136,32 @@ public class heroController : MonoBehaviour
     public void DisableAttackCollider()
     {
         attackCollider.SetActive(false);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("dragon"))
+        {
+            //Debug.Log("드래곤과 충돌");
+            HandleDie();
+        }
+    }
+
+    void HandleDie()
+    {
+        animator.SetTrigger("isDead");
+
+        // 입력 비활성화
+        this.enabled = false;
+
+        // 애니메이션이 끝난 후 장면 이동
+        StartCoroutine(dieScene());
+    }
+    IEnumerator dieScene()
+    {
+        // 애니메이션 재생 후 죽을 수 있게 딜레이
+        yield return new WaitForSeconds(1.0f);
+
+        SceneManager.LoadScene("loseScene");
     }
 }

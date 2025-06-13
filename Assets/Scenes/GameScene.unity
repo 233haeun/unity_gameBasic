@@ -131,9 +131,9 @@ GameObject:
   - component: {fileID: 38303525}
   - component: {fileID: 38303527}
   - component: {fileID: 38303528}
-  - component: {fileID: 38303529}
   - component: {fileID: 38303530}
   - component: {fileID: 38303531}
+  - component: {fileID: 38303532}
   m_Layer: 0
   m_Name: hero
   m_TagString: Player
@@ -501,22 +501,6 @@ PolygonCollider2D:
       - {x: 0.15381983, y: -0.67462337}
       - {x: 0.1533058, y: -0.7674721}
   m_UseDelaunayMesh: 0
---- !u!114 &38303529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38303524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecbb503f4f1f29440b98d867ad451e01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackCollider: {fileID: 929728424}
-  runForce: 30
-  maxRunSpeed: 60
-  jumpForce: 300
 --- !u!95 &38303530
 Animator:
   serializedVersion: 7
@@ -585,6 +569,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.82373154, y: 1.0995333}
   m_EdgeRadius: 0
+--- !u!114 &38303532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38303524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecbb503f4f1f29440b98d867ad451e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCollider: {fileID: 929728424}
+  runForce: 30
+  maxRunSpeed: 60
+  jumpForce: 680
 --- !u!1 &192115520
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,9 +1265,9 @@ GameObject:
   - component: {fileID: 1027881507}
   - component: {fileID: 1027881506}
   - component: {fileID: 1027881509}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: dragon
-  m_TagString: Untagged
+  m_TagString: dragon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1747,7 +1747,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1898418688}
-  - component: {fileID: 1898418687}
+  - component: {fileID: 1898418689}
   m_Layer: 0
   m_Name: director
   m_TagString: Untagged
@@ -1755,20 +1755,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1898418687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898418686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9daf1a9b0f26047bf5512df8843314, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hero: {fileID: 38303524}
-  gameOverYPosition: -15
 --- !u!4 &1898418688
 Transform:
   m_ObjectHideFlags: 0
@@ -1784,6 +1770,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1898418689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898418686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9daf1a9b0f26047bf5512df8843314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hero: {fileID: 38303524}
+  gameOverYPosition: -20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
