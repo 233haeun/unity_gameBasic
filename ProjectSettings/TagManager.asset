@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Attack
   - dragon
+  - key
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,7 @@ public class heroController : MonoBehaviour
     Coroutine runResetCoroutine;
 
     public GameObject attackCollider;
+    public GameObject key;
 
     private Animator animator;
     private Rigidbody2D rigid2D;
@@ -144,6 +145,10 @@ public class heroController : MonoBehaviour
         {
             //Debug.Log("드래곤과 충돌");
             HandleDie();
+        }
+        else if (collision.gameObject.CompareTag("key"))
+        {
+            SceneManager.LoadScene("winScene");
         }
     }
 

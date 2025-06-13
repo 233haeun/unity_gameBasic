@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95421e57d12c796439b7fe389aaa673a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
 --- !u!1 &8621538771969228712
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,9 +252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetPrefab: {fileID: 0}
-  gemPrefab: {fileID: 0}
   moveDistance: 2.5
-  moveSpeed: 0.7
+  moveSpeed: 3
 --- !u!95 &3196666969718511990
 Animator:
   serializedVersion: 7

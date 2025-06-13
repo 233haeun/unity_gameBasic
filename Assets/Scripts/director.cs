@@ -4,8 +4,9 @@ using UnityEngine.SceneManagement;
 public class director : MonoBehaviour
 {
     public GameObject hero; // 주인공 오브젝트 불러오기
+   
+    public CircleCollider2D gameOverCollider;
     public float gameOverYPosition = -15f; // 주인공 떨어질 때 게임 오버 시킬 y 좌표
-
 
     void Update()
     {
