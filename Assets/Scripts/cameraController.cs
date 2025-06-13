@@ -15,6 +15,7 @@ public class cameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //주인공 시점으로 따라가기
         Vector3 playerPos = this.player.transform.position;
         transform.position = new Vector3(playerPos.x, playerPos.y, transform.position.z);
     }
