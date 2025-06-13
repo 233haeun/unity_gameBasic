@@ -121,14 +121,17 @@ public class heroController : MonoBehaviour
             isAttack = true;
             animator.SetTrigger("isAttack");
 
+            attackCollider.SetActive(true); // 충돌 판정 시작
             StartCoroutine(ResetAttack(0.5f));
         }
     }
+
 
     IEnumerator ResetAttack(float delay)
     {
         yield return new WaitForSeconds(delay);
         isAttack = false;
+        attackCollider.SetActive(false);
     }
 
     public void EnableAttackCollider()
